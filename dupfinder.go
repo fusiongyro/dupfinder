@@ -16,8 +16,7 @@ func Usage() {
 func main() {
 	if flag.NArg() < 1 {
 		Usage()
-	}
-	else {
+	} else {
 		// this is the cute part where I use it
 		for fd := range ChecksumIterator(flag.Arg(0)).Iter() {
 			fmt.Printf("  %s:  %s\n", fd.Name, fd.Hash);
