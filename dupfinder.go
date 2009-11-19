@@ -5,7 +5,7 @@ import "container/vector"
 type DuplicateMap map[string] *vector.StringVector
 
 func FindDuplicates(p Path) DuplicateMap {
-	duplicates := make(map[string] *vector.StringVector);
+	duplicates := make(DuplicateMap);
 	
 	for fd := range ChecksumIterator(p).Iter() {
 		vec, ok := duplicates[fd.Hash]; 
