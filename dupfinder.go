@@ -10,8 +10,8 @@ func FindDuplicates(p Path) DuplicateMap {
 	for fd := range ChecksumIterator(p).Iter() {
 		vec, ok := duplicates[fd.Hash]; 
 		if !ok {
-			vec = vector.NewStringVector(0);
-			duplicates[fd.Hash] = vec;
+			vec = new(vector.StringVector);
+			duplicates[fd.Hash] = vec
 		}
 		vec.Push(fd.Name);
 	}
