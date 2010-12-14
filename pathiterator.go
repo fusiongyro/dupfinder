@@ -22,11 +22,11 @@ func (p Path) Iter() <-chan Path {
 type pathIter chan<- Path
 
 // path.Visitor interface definitions
-func (c pathIter) VisitDir(path string, d *os.Dir) bool {
+func (c pathIter) VisitDir(path string, d *os.FileInfo) bool {
 	return path[0] != '.'
 }
 
-func (c pathIter) VisitFile(path string, d *os.Dir) {
+func (c pathIter) VisitFile(path string, d *os.FileInfo) {
 	c <- Path(path)
 }
 

@@ -3,7 +3,7 @@ package main
 import (
 	"flag";
 	"fmt";
-	"os"
+	"os";
 )
 
 // Display a user-friendly usage message
@@ -26,10 +26,10 @@ func main() {
 			if filenames.Len() > 1 {
 				fmt.Printf("Duplicate files with hash %s:\n", hash);
 				i = 1;
-				for filename := range filenames.Iter() {
+				filenames.Do(func (filename string) {
 					fmt.Printf("  %d. %s\n", i, filename);
 					i++
-				}
+				})
 				println()
 			}
 		}
