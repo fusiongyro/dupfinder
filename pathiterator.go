@@ -7,11 +7,11 @@ type Path string
 // satisfies exp/iterable.Iterable interface
 func (p Path) Iter() <-chan Path {
 	// this is our result channel
-	c := make(chan Path);
+	c := make(chan Path)
 	
 	// this goroutine recursively walks the path and then closes this channel
 	go func() { 
-		path.Walk(p.String(), pathIter(c), nil);
+		path.Walk(p.String(), pathIter(c), nil)
 		close(c)
 	}();
 	
@@ -31,4 +31,4 @@ func (c pathIter) VisitFile(path string, d *os.FileInfo) {
 }
 
 // for the sake of convenience and not abusing type casts
-func (p Path) String() string { return string(p); }
+func (p Path) String() string { return string(p) }
